@@ -1,8 +1,8 @@
-Finnish Language Learning Application
+# Finnish Language Learning Application
 
-To Do:
+### To Do:
+- Alter Correct/Incorrect output to be more readable
 - Separate vocab lists into a separate file(s)
-- Make correct/incorrect text easier to read
 - Menu page to start
 - List of exercises to choose from (all vocab, types of vocab, phrases, etc)
 - Correct vs Incorrect counter - gamify!
