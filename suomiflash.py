@@ -147,9 +147,9 @@ def answer():
     Takes the user's input and checks if their translation is correct. 
     '''
     if entry_box.get().capitalize() == general_vocab[rand_word][1]:
-        ans_label.config(text=f"Correct! {general_vocab[rand_word][0]} translates to {general_vocab[rand_word][1]}.")
+        ans_label.config(text=f"Correct! {general_vocab[rand_word][0]} translates to {general_vocab[rand_word][1]}.", fg="#34eba1")
     else:
-        ans_label.config(text=f"Incorrect! {general_vocab[rand_word][0]} translates to {(general_vocab[rand_word][1]).capitalize()}.")
+        ans_label.config(text=f"Incorrect! {general_vocab[rand_word][0]} translates to {(general_vocab[rand_word][1]).capitalize()}.", fg="#eb345b")
 
 
 # keeping track of the hints given
