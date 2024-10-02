@@ -1,6 +1,6 @@
-Finnish Language Learning Application
+# Finnish Language Learning Application
 
-To Do:
+### To Do:
 - Alter Correct/Incorrect output to be more readable
 - Separate vocab lists into a separate file(s)
 - Menu page to start
