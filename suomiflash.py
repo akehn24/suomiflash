@@ -11,124 +11,6 @@ root.geometry("550x450")
 
 
 ### Vocab Lists ########################################
-vocab = [
-    (("Hei"), ("Hi")), 
-    (("Heihei"), ("Bye")),
-    (("Kiitos"), ("Thank you")),
-    (("Anteeksi"), ("Sorry")),
-    (("Terve"), ("Hello")), 
-    (("Tervetuloa"), ("Welcome")), 
-    (("Kuka"), ("Who")), 
-    (("Mukava"), ("Nice")), 
-    (("Hauska"), ("Funny")), 
-    (("Kaunis"), ("Beautiful")), 
-    (("Komea"), ("Handsome")), 
-    (("Kippis"), ("Cheers")), 
-    (("Joo"), ("Yes")), 
-    (("Kyllä"), ("Yes")), 
-    (("Ei"), ("No")), 
-    (("Paljon"), ("Lots")), 
-    (("Onnea"), ("Good luck")), 
-    (("Jee"), ("Yay")), 
-    (("Ja"), ("And")), 
-    (("Minä olen"), ("I am")), 
-    (("Sinä olet"), ("You are")), 
-    (("Aina"), ("Always")), 
-    (("Mies"), ("Man")), 
-    (("Nainen"), ("Woman")), 
-    (("Ihminen"), ("Human")), 
-    (("On"), ("Is")), 
-    (("Hän"), ("He/She")), 
-    (("Lapsi"), ("Child")), 
-    (("Valkoinen"), ("White")), 
-    (("Harmaa"), ("Grey")), 
-    (("Ruskea"), ("Brown")), 
-    (("Purppura"), ("Purple")), 
-    (("Violetti"), ("Purple")), 
-    (("Sininen"), ("Blue")), 
-    (("Vihreä"), ("Green")), 
-    (("Keltainen"), ("Yellow")), 
-    (("Oranssi"), ("Orange")), 
-    (("Punainen"), ("Red")), 
-    (("Vaaleanpunainen"), ("Pink")), 
-    (("Pinki"), ("Pink")), 
-    (("Musta"), ("Black")), 
-    (("Ujo"), ("Shy")), 
-    (("Hiljainen"), ("Quiet")), 
-    (("Ystävä"), ("Friend")), 
-    (("Rehellinen"), ("Honest")), 
-    (("Tyttö"), ("Girl")), 
-    (("Poika"), ("Boy")), 
-    (("Sisko"), ("Sister")), 
-    (("Herra"), ("Mr")), 
-    (("Suomi"), ("Finland")), 
-    (("Suomeksi"), ("In Finnish")), 
-    (("Suomea"), ("Finnish")), 
-    (("Tämä"), ("This")), 
-    (("Maa"), ("Country")), 
-    (("Hyvä"), ("Good")), 
-    (("Todella"), ("Very")), 
-    (("Rouva"), ("Mrs")), 
-    (("Isä"), ("Father")), 
-    (("Maanantai"), ("Monday")), 
-    (("Tiistai"), ("Tuesday")), 
-    (("Keskiviikko"), ("Wednesday")), 
-    (("Torstai"), ("Thursday")), 
-    (("Perjantai"), ("Friday")), 
-    (("Lauantai"), ("Saturday")), 
-    (("Sunnuntai"), ("Sunday")), 
-    (("Tammikuu"), ("January")), 
-    (("Helmikuu"), ("February")), 
-    (("Maaliskuu"), ("March")), 
-    (("Huhtikuu"), ("April")), 
-    (("Toukokuu"), ("May")), 
-    (("Kesäkuu"), ("June")), 
-    (("Heinakuu"), ("July")), 
-    (("Elokuu"), ("August")), 
-    (("Syyskuu"), ("September")), 
-    (("Lokakuu"), ("October")), 
-    (("Marraskuu"), ("November")), 
-    (("Joulukuu"), ("December")), 
-    (("Maalit"), ("Goals")), 
-    (("Maali"), ("Goal")), 
-    (("Tehdä"), ("To do")), 
-    (("Syntymäpäivä"), ("Birthday")),
-    (("Syntymäpäivät"), ("Birthdays")),  
-    (("Kuu"), ("Moon")), 
-    (("Kuukaudet"), ("Months")), 
-    (("Viikonpäivät"), ("Days of the week")), 
-    (("Huomenta"), ("Morning")), 
-    (("Nähdään"), ("See you")), 
-    (("Ole hyvä"), ("You're welcome")), 
-    (("Ei kestä"), ("Don't mention it")),  
-    (("Ei se mitään"), ("It's nothing")), 
-    (("Okei"), ("Ok")), 
-    (("Selva"), ("Ok")), 
-    (("Mennään"), ("Let's go")), 
-    (("Hitaammin"), ("Slower")), 
-    (("Opiskelen"), ("I study")), 
-    (("Koira"), ("Dog")), 
-    (("Kissa"), ("Cat")), 
-    (("Järvi"), ("Lake")), 
-    # ((""), ("")), 
-    # ((""), ("")), 
-]
-# vocab = []
-
-# def get_vocab():
-#     paths = ["/Users/akehn/Documents/repos/suomiflash/vocab_files/general_vocab.csv"]
-#     for path in paths:
-#         df = pd.read_csv(path, na_filter=False, encoding = 'utf-8')
-
-#         # check the column headers
-#         # pd.set_option('display.max_columns', None)
-#         # print(df.head())
-#         # return
-
-#         for index, word in df.iterrows():
-#             vocab.append(word)
-#     return
-
 vocab = []
 def get_vocab():
     filepath = "/Users/akehn/Documents/repos/suomiflash/vocab_files/general_vocab.csv"
@@ -140,6 +22,9 @@ def get_vocab():
 
 
 ### Functions ##########################################
+
+
+
 def next():
     '''
     Next Function
