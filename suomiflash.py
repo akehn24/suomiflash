@@ -1,13 +1,24 @@
 import csv
 from tkinter import *
-# import pandas as pd
 from random import randint
 
 
 root = Tk()
 root.title("Suomi Flash - Finnish Language Learning App")
 root.iconbitmap("/Users/akehn/Documents/repos/suomiflash/suomiflash.py")
-root.geometry("550x450")
+
+# app size
+app_width = 550
+app_height = 450
+
+# center app in the middle of the screen
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+x_coord = int((screen_width / 2) - (app_width / 2))
+y_coord = int((screen_height / 2) - (app_height / 2))
+
+# create app's main window
+root.geometry(f"{app_width}x{app_height}+{x_coord}+{y_coord}")
 
 
 ### Vocab Lists ########################################
@@ -22,15 +33,7 @@ def get_vocab():
 
 
 ### Functions ##########################################
-
-
-
-def next():
-    '''
-    Next Function
-    Generates a random int to get a random word from the vocab list and sets the label
-    to this word.
-    '''
+def clear():
     global hint_string, hint_count
 
     # clear previous word/answer
@@ -40,6 +43,15 @@ def next():
     hint_label.config(text="")
     hint_string = ""
     hint_count = 0
+
+
+def next():
+    '''
+    Next Function
+    Generates a random int to get a random word from the vocab list and sets the label
+    to this word.
+    '''
+    clear()
 
     # create random int/word
     global rand_word
