@@ -1,10 +1,8 @@
 # Finnish Language Learning Application
 
-------
 ### To Do:
 - Choose which language to show as vocab -> BLOCKED: need to figure out how to do multi-word translations
 - List of exercises to choose from (all vocab, types of vocab, phrases, etc)
-- Separate clear into own function
 - Function file - is this possible? It should be...
 - Exit button
 - Top menu vs. Start menu (or both?)
@@ -32,3 +30,4 @@
 - Separate vocab lists into a separate file(s)
 - Score counter
 - Alter labels for readability
+- Clear function
