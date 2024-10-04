@@ -171,11 +171,10 @@ def answer():
     Takes the user's input and checks if their translation is correct. 
     '''
     global score
-    print(score)
+
     if entry_box.get().capitalize() == vocab[rand_word][1]:
         ans_label.config(text=f"Correct! {vocab[rand_word][0]} translates to {vocab[rand_word][1]}.", fg="#34eba1")
         score += 1
-        print(score)
     else:
         ans_label.config(text=f"Incorrect! {vocab[rand_word][0]} translates to {(vocab[rand_word][1]).capitalize()}.", fg="#eb345b")
         score = 0
@@ -206,11 +205,15 @@ def hint():
 ########################################################
 # Word Label
 vocab_word = Label(root, text="", font=("Arial", 36))
-vocab_word.pack(pady=50)
+vocab_word.pack(pady=20)
 
 # Answer Label
-ans_label = Label(root, text="")
+ans_label = Label(root, text="", font=("Arial", 20))
 ans_label.pack(pady=20)
+
+# Hint Label
+hint_label = Label(root, text="", font=("Arial", 15))
+hint_label.pack()
 
 # Answer Entry Box
 entry_box = Entry(root, font=("Arial", 18))
@@ -218,7 +221,7 @@ entry_box.pack(pady=20)
 
 # Button Frame
 button_frame = Frame(root)
-button_frame.pack(pady=20)
+button_frame.pack(pady=10)
 
 # Answer Button
 ans_button = Button(button_frame, text="Check", command=answer)
@@ -233,12 +236,8 @@ hint_button = Button(button_frame, text="Hint", command=hint)
 hint_button.grid(row=1, column=0)
 
 # Score Label
-score_label = Label(root, text="")
+score_label = Label(root, text="", font=("Arial", 20))
 score_label.pack(pady=20)
-
-# Hint Label
-hint_label = Label(root, text="")
-hint_label.pack(pady=20)
 ########################################################
 
 
