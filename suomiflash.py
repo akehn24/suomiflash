@@ -1,6 +1,7 @@
 import csv
 from tkinter import *
 from random import randint
+# from tkmacosx import Button
 
 
 root = Tk()
@@ -96,6 +97,14 @@ def hint():
         hint_string = hint_string + vocab[rand_word][1][hint_count]
         hint_label.config(text=hint_string)
         hint_count += 1
+
+
+def button_enter(event):
+    event.widget["fg"] = "#375efa"
+
+
+def button_leave(event):
+    event.widget["fg"] = "#000000"
 ########################################################
 
 
@@ -105,7 +114,7 @@ vocab_word = Label(root, text="", font=("Arial", 36))
 vocab_word.pack(pady=20)
 
 # Answer Label
-ans_label = Label(root, text="", font=("Arial", 20))
+ans_label = Label(root, text="", font=("Helvetica", 20))
 ans_label.pack(pady=20)
 
 # Hint Label
@@ -121,16 +130,22 @@ button_frame = Frame(root)
 button_frame.pack(pady=10)
 
 # Answer Button
-ans_button = Button(button_frame, text="Check", command=answer)
+ans_button = Button(button_frame, text="Answer", command=answer, fg="#000000")
 ans_button.grid(row=0, column=1, padx=20)
+ans_button.bind("<Enter>", button_enter)
+ans_button.bind("<Leave>", button_leave)
 
 # Next Button
-next_button = Button(button_frame, text="Next", command=next)
+next_button = Button(button_frame, text="Next", command=next, fg="#000000")
 next_button.grid(row=1, column=2)
+next_button.bind("<Enter>", button_enter)
+next_button.bind("<Leave>", button_leave)
 
 # Hint Button
-hint_button = Button(button_frame, text="Hint", command=hint)
+hint_button = Button(button_frame, text="Hint", command=hint, fg="#000000")
 hint_button.grid(row=1, column=0)
+hint_button.bind("<Enter>", button_enter)
+hint_button.bind("<Leave>", button_leave)
 
 # Score Label
 score_label = Label(root, text="", font=("Arial", 20))
