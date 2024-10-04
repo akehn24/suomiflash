@@ -164,17 +164,22 @@ def next():
     vocab_word.config(text=vocab[rand_word][0])
 
 
+score = 0
 def answer():
     '''
     Answer Function
     Takes the user's input and checks if their translation is correct. 
     '''
-    print(entry_box.get().capitalize())
-
+    global score
+    print(score)
     if entry_box.get().capitalize() == vocab[rand_word][1]:
         ans_label.config(text=f"Correct! {vocab[rand_word][0]} translates to {vocab[rand_word][1]}.", fg="#34eba1")
+        score += 1
+        print(score)
     else:
         ans_label.config(text=f"Incorrect! {vocab[rand_word][0]} translates to {(vocab[rand_word][1]).capitalize()}.", fg="#eb345b")
+        score = 0
+    score_label.config(text=f"Score = {score}")
 
 
 # keeping track of the hints given
@@ -226,6 +231,10 @@ next_button.grid(row=1, column=2)
 # Hint Button
 hint_button = Button(button_frame, text="Hint", command=hint)
 hint_button.grid(row=1, column=0)
+
+# Score Label
+score_label = Label(root, text="")
+score_label.pack(pady=20)
 
 # Hint Label
 hint_label = Label(root, text="")
