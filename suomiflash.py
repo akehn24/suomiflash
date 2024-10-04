@@ -1,5 +1,8 @@
+import csv
 from tkinter import *
+# import pandas as pd
 from random import randint
+
 
 root = Tk()
 root.title("Suomi Flash - Finnish Language Learning App")
@@ -8,7 +11,7 @@ root.geometry("550x450")
 
 
 ### Vocab Lists ########################################
-general_vocab = [
+vocab = [
     (("Hei"), ("Hi")), 
     (("Heihei"), ("Bye")),
     (("Kiitos"), ("Thank you")),
@@ -110,13 +113,33 @@ general_vocab = [
     # ((""), ("")), 
     # ((""), ("")), 
 ]
+# vocab = []
+
+# def get_vocab():
+#     paths = ["/Users/akehn/Documents/repos/suomiflash/vocab_files/general_vocab.csv"]
+#     for path in paths:
+#         df = pd.read_csv(path, na_filter=False, encoding = 'utf-8')
+
+#         # check the column headers
+#         # pd.set_option('display.max_columns', None)
+#         # print(df.head())
+#         # return
+
+#         for index, word in df.iterrows():
+#             vocab.append(word)
+#     return
+
+vocab = []
+def get_vocab():
+    filepath = "/Users/akehn/Documents/repos/suomiflash/vocab_files/general_vocab.csv"
+    with open(filepath, newline='') as vocab_csv:
+        vocab_reader = csv.reader(vocab_csv, delimiter=',')
+        for word in vocab_reader:
+            vocab.append(word)
 ########################################################
 
 
 ### Functions ##########################################
-# number of general vocab words
-gen_vocab_count = len(general_vocab)
-
 def next():
     '''
     Next Function
@@ -135,10 +158,10 @@ def next():
 
     # create random int/word
     global rand_word
-    rand_word = randint(0, gen_vocab_count-1)
+    rand_word = randint(0, len(vocab)-1)
 
     # update label with the random word
-    vocab_word.config(text=general_vocab[rand_word][0])
+    vocab_word.config(text=vocab[rand_word][0])
 
 
 def answer():
@@ -146,10 +169,12 @@ def answer():
     Answer Function
     Takes the user's input and checks if their translation is correct. 
     '''
-    if entry_box.get().capitalize() == general_vocab[rand_word][1]:
-        ans_label.config(text=f"Correct! {general_vocab[rand_word][0]} translates to {general_vocab[rand_word][1]}.", fg="#34eba1")
+    print(entry_box.get().capitalize())
+
+    if entry_box.get().capitalize() == vocab[rand_word][1]:
+        ans_label.config(text=f"Correct! {vocab[rand_word][0]} translates to {vocab[rand_word][1]}.", fg="#34eba1")
     else:
-        ans_label.config(text=f"Incorrect! {general_vocab[rand_word][0]} translates to {(general_vocab[rand_word][1]).capitalize()}.", fg="#eb345b")
+        ans_label.config(text=f"Incorrect! {vocab[rand_word][0]} translates to {(vocab[rand_word][1]).capitalize()}.", fg="#eb345b")
 
 
 # keeping track of the hints given
@@ -163,11 +188,11 @@ def hint():
     global hint_string
     global hint_count
 
-    word_length = len(general_vocab[rand_word][1])
+    word_length = len(vocab[rand_word][1])
 
     if hint_count < word_length:
         # keep giving hints
-        hint_string = hint_string + general_vocab[rand_word][1][hint_count]
+        hint_string = hint_string + vocab[rand_word][1][hint_count]
         hint_label.config(text=hint_string)
         hint_count += 1
 ########################################################
@@ -209,6 +234,7 @@ hint_label.pack(pady=20)
 
 
 # program start
+get_vocab()
 next()
 
 root.mainloop()
