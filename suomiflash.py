@@ -40,6 +40,7 @@ def clear():
     # clear previous word/answer
     ans_label.config(text="")
     entry_box.delete(0, END)
+    
     # reset hint
     hint_label.config(text="")
     hint_string = ""
