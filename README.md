@@ -6,9 +6,6 @@
 - Function file - is this possible? It should be...
 - Exit button
 - Top menu vs. Start menu (or both?)
-- Make buttons prettier
-- Hover-over and click button animations
-- Center app on screen
 
 
 ### Long-term To Do:
@@ -31,3 +28,5 @@
 - Score counter
 - Alter labels for readability
 - Clear function
+- Center app on screen
+- Hover-over and click button animations
