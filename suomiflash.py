@@ -20,9 +20,27 @@ y_coord = int((screen_height / 2) - (app_height / 2))
 
 # create app's main window
 root.geometry(f"{app_width}x{app_height}+{x_coord}+{y_coord}")
+root.attributes('-topmost',True)
 
 
-### Vocab Lists ########################################
+### Functions ##########################################
+def title_window():
+    '''
+    Title Screen Window
+    -- Not currently working --
+    '''
+    global title_screen
+
+    title_screen = Toplevel()
+    title_screen.geometry("300x200")
+    title_screen.attributes('-topmost',True)
+    # hide title bar
+    title_screen.overrideredirect(True)
+
+    title_label = Label(title_screen, text="SuomiFlash", font=("Arial", 30))
+    title_label.pack(pady=30)
+
+
 vocab = []
 def get_vocab():
     filepath = "/Users/akehn/Documents/repos/suomiflash/vocab_files/general_vocab.csv"
@@ -30,17 +48,14 @@ def get_vocab():
         vocab_reader = csv.reader(vocab_csv, delimiter=',')
         for word in vocab_reader:
             vocab.append(word)
-########################################################
 
-
-### Functions ##########################################
 def clear():
     global hint_string, hint_count
 
     # clear previous word/answer
     ans_label.config(text="")
     entry_box.delete(0, END)
-    
+
     # reset hint
     hint_label.config(text="")
     hint_string = ""
@@ -153,9 +168,8 @@ score_label = Label(root, text="", font=("Arial", 20))
 score_label.pack(pady=20)
 ########################################################
 
-
 # program start
 get_vocab()
 next()
 
-root.mainloop()
+mainloop()
