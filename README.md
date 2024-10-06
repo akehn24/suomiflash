@@ -5,7 +5,8 @@
 - List of exercises to choose from (all vocab, types of vocab, phrases, etc)
 - Function file - is this possible? It should be...
 - Exit button
-- Top menu vs. Start menu (or both?)
+- Top menu 
+- Start menu
 
 
 ### Long-term To Do:
