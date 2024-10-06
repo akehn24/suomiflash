@@ -1,9 +1,10 @@
 import csv
 from tkinter import *
 from random import randint
+from PIL import ImageTk, Image
 
 
-# title splash screen
+### Title Splash Screen ################################
 title_screen = Tk()
 title_screen.attributes('-topmost',True)
 # hide title bar
@@ -16,23 +17,31 @@ root_label.pack(pady=30)
 app_width = 550
 app_height = 450
 
-# center screens in the middle of the screen
+# use these to center your windows
 screen_width = title_screen.winfo_screenwidth()
 screen_height = title_screen.winfo_screenheight()
 x_coord = int((screen_width / 2) - (app_width / 2))
 y_coord = int((screen_height / 2) - (app_height / 2))
 
 title_screen.geometry(f"300x100+{x_coord + 125}+{y_coord + 100}")
+########################################################
 
 
 ### Functions ##########################################
 vocab_files = {
     "General Vocab": "/Users/akehn/Documents/repos/suomiflash/vocab_files/general_vocab.csv", 
-    "": "", 
+    "People": "", 
+    "Animals": "", 
+    "Colors": "", 
+    "Calendar": "", 
+    "Numbers": "", 
 }
 vocab = []
-def get_vocab():
-    filepath = "/Users/akehn/Documents/repos/suomiflash/vocab_files/general_vocab.csv"
+def get_vocab(vocab_file):
+
+    vocab_file = vocab_file.get()
+
+    filepath = vocab_files[vocab_file]
     with open(filepath, newline='') as vocab_csv:
         vocab_reader = csv.reader(vocab_csv, delimiter=',')
         for word in vocab_reader:
@@ -56,15 +65,15 @@ def game_screen():
     - Second function for the main menu.
     - Add a back button that goes back to the main menu.
     '''
-    title_screen.destroy()
+    # title_screen.destroy()
 
-    root = Tk()
-    root.title("Suomi Flash - Finnish Language Learning App")
-    root.iconbitmap("/Users/akehn/Documents/repos/suomiflash/suomiflash.py")
+    game_screen = Toplevel()
+    game_screen.title("Suomi Flash - Finnish Language Learning App")
+    # game_screen.iconbitmap("/Users/akehn/Documents/repos/suomiflash/window_icon.ico")
 
     # create app's main window
-    root.geometry(f"{app_width}x{app_height}+{x_coord}+{y_coord}")
-    root.attributes('-topmost',True)
+    game_screen.geometry(f"{app_width}x{app_height}+{x_coord}+{y_coord}")
+    game_screen.attributes('-topmost',True)
 
 
     ### Main Game Functions ################################
@@ -111,6 +120,7 @@ def game_screen():
             score += 1
         else:
             ans_label.config(text=f"Incorrect! {vocab[rand_word][0]} translates to {(vocab[rand_word][1]).capitalize()}.", fg="#eb345b")
+            print("SCORE")
             score = 0
         score_label.config(text=f"Score = {score}")
 
@@ -137,25 +147,26 @@ def game_screen():
             hint_count += 1
     ########################################################
 
+
     ### Game Buttons #######################################
     # Word Label
-    vocab_word = Label(root, text="", font=("Arial", 36))
+    vocab_word = Label(game_screen, text="", font=("Arial", 36))
     vocab_word.pack(pady=20)
 
     # Answer Label
-    ans_label = Label(root, text="", font=("Helvetica", 20))
+    ans_label = Label(game_screen, text="", font=("Helvetica", 20))
     ans_label.pack(pady=20)
 
     # Hint Label
-    hint_label = Label(root, text="", font=("Arial", 15))
+    hint_label = Label(game_screen, text="", font=("Arial", 15))
     hint_label.pack()
 
     # Answer Entry Box
-    entry_box = Entry(root, font=("Arial", 18))
+    entry_box = Entry(game_screen, font=("Arial", 18))
     entry_box.pack(pady=20)
 
     # Button Frame
-    button_frame = Frame(root)
+    button_frame = Frame(game_screen)
     button_frame.pack(pady=10)
 
     # Answer Button
@@ -177,11 +188,14 @@ def game_screen():
     hint_button.bind("<Leave>", button_leave)
 
     # Score Label
-    score_label = Label(root, text="", font=("Arial", 20))
+    score_label = Label(game_screen, text="", font=("Arial", 20))
     score_label.pack(pady=20)
+
+    # Back Button
+    back_button = Button(game_screen, text="Back to Menu", command=game_screen.destroy)
+    back_button.pack()
     ########################################################
 
-    get_vocab()
     next()
 
 ########################################################
@@ -192,13 +206,60 @@ def main_menu():
     '''
     Main Menu Screen
     '''
-    pass
+    title_screen.destroy()
+
+    root = Tk()
+    root.title("Suomi Flash - Finnish Language Learning App")
+    root.iconbitmap("/Users/akehn/Documents/repos/suomiflash/suomiflash.py")
+
+    # create app's main window
+    root.geometry(f"{app_width}x{app_height}+{x_coord}+{y_coord}")
+    root.attributes('-topmost',True)
+
+
+    ### Menu Buttons/Labels ###################################
+    # Title Label
+    title_label = Label(root, text="SuomiFlash", font=("Arial", 36))
+    title_label.pack(pady=20)
+
+    # Choose Your Vocab Label
+    choose_label = Label(root, text="Choose your vocab:", font=("Arial", 20))
+    choose_label.pack(pady=20)
+
+    # Vocab Dropdown
+    vocab_file = StringVar()
+    vocab_file.set("General Vocab")
+    vocab_dropdown = OptionMenu(root, vocab_file, 
+                                "General Vocab", 
+                                "People", 
+                                "Animals", 
+                                "Colors", 
+                                "Calendar", 
+                                "Numbers", 
+                                )
+    vocab_dropdown.pack()
+    get_vocab(vocab_file)
+
+    # # Button Frame
+    # button_frame = Frame(root)
+    # button_frame.pack(pady=10)
+
+    # Start Button
+    start_button = Button(root, text="Start", command=game_screen)
+    start_button.pack(pady=20)
+
+    # Quit Button
+    quit_button = Button(root, text="Quit", command=root.quit)
+    quit_button.pack()
+    ####################################################
+
+
 ########################################################
 
 
 ########################################################
 ########################################################
 
-title_screen.after(2000, game_screen)
+title_screen.after(2000, main_menu)
 
 mainloop()
