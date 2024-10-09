@@ -1,17 +1,15 @@
 # Finnish Language Learning Application
 
 ### To Do:
-- Top menu - not sure what to do with this, do I need it?
 - Look into separate files - can I put the windows that aren't the title screen there? 
-- Add additional vocab files
 - Choose which language to show as vocab -> BLOCKED: need to figure out how to do multi-word translations
+- Spoken vs. Written words -> WIP, not enough yet
 
 
 ### Long-term To Do:
 - Different modes -> Practice (doesn't end with incorrect answers) and Challenge (ends with incorrect answers, pop-up with score, etc.)
 - Not just vocab -> translate phrases, enter response to prompt (ex: *How are you?* I'm good!)
 - Conjugations -> not sure how I'd do these yet, just an idea
-- Spoken vs. Written words
 
 
 ------
@@ -31,4 +29,4 @@
 - Hover-over and click button animations
 - Start menu
 - Exit button
-- List of exercises to choose from (all vocab, types of vocab, phrases, etc)
+- List of vocab to choose from
