@@ -1,12 +1,10 @@
 # Finnish Language Learning Application
 
 ### To Do:
+- Top menu - not sure what to do with this, do I need it?
+- Look into separate files - can I put the windows that aren't the title screen there? 
+- Add additional vocab files
 - Choose which language to show as vocab -> BLOCKED: need to figure out how to do multi-word translations
-- List of exercises to choose from (all vocab, types of vocab, phrases, etc)
-- Function file - is this possible? It should be...
-- Exit button
-- Top menu 
-- Start menu
 
 
 ### Long-term To Do:
@@ -31,3 +29,6 @@
 - Clear function
 - Center app on screen
 - Hover-over and click button animations
+- Start menu
+- Exit button
+- List of exercises to choose from (all vocab, types of vocab, phrases, etc)

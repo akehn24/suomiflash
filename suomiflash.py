@@ -1,7 +1,7 @@
 import csv
 from tkinter import *
 from random import randint
-from PIL import ImageTk, Image
+# from PIL import ImageTk, Image
 
 
 ### Title Splash Screen ################################
@@ -29,23 +29,26 @@ title_screen.geometry(f"300x100+{x_coord + 125}+{y_coord + 100}")
 
 ### Functions ##########################################
 vocab_files = {
+    "Choose Your Vocab": "", 
     "General Vocab": "/Users/akehn/Documents/repos/suomiflash/vocab_files/general_vocab.csv", 
-    "People": "", 
-    "Animals": "", 
-    "Colors": "", 
-    "Calendar": "", 
-    "Numbers": "", 
+    "People": "/Users/akehn/Documents/repos/suomiflash/vocab_files/people_vocab.csv", 
+    "Animals": "/Users/akehn/Documents/repos/suomiflash/vocab_files/animal_vocab.csv", 
+    "Colors": "/Users/akehn/Documents/repos/suomiflash/vocab_files/color_vocab.csv", 
+    "Calendar": "/Users/akehn/Documents/repos/suomiflash/vocab_files/calendar_vocab.csv", 
+    "Numbers": "/Users/akehn/Documents/repos/suomiflash/vocab_files/number_vocab.csv", 
 }
-vocab = []
+global vocab
 def get_vocab(vocab_file):
-
+    global vocab
+    vocab = []
     vocab_file = vocab_file.get()
 
     filepath = vocab_files[vocab_file]
-    with open(filepath, newline='') as vocab_csv:
-        vocab_reader = csv.reader(vocab_csv, delimiter=',')
-        for word in vocab_reader:
-            vocab.append(word)
+    if filepath:
+        with open(filepath, newline='') as vocab_csv:
+            vocab_reader = csv.reader(vocab_csv, delimiter=',')
+            for word in vocab_reader:
+                vocab.append(word)
 
 
 def button_enter(event):
@@ -99,6 +102,7 @@ def game_screen():
         clear_answers()
 
         # create random int/word
+        global vocab
         global rand_word
         rand_word = randint(0, len(vocab)-1)
 
@@ -120,7 +124,6 @@ def game_screen():
             score += 1
         else:
             ans_label.config(text=f"Incorrect! {vocab[rand_word][0]} translates to {(vocab[rand_word][1]).capitalize()}.", fg="#eb345b")
-            print("SCORE")
             score = 0
         score_label.config(text=f"Score = {score}")
 
@@ -197,7 +200,6 @@ def game_screen():
     ########################################################
 
     next()
-
 ########################################################
 
 
@@ -217,6 +219,11 @@ def main_menu():
     root.attributes('-topmost',True)
 
 
+    def on_select_vocab(selection):
+        if selection.get() != "Choose Your Vocab":
+            get_vocab(vocab_file)
+
+
     ### Menu Buttons/Labels ###################################
     # Title Label
     title_label = Label(root, text="SuomiFlash", font=("Arial", 36))
@@ -227,18 +234,11 @@ def main_menu():
     choose_label.pack(pady=20)
 
     # Vocab Dropdown
+    vocab_file_options = ["Choose Your Vocab", "General Vocab", "People", "Animals", "Colors", "Calendar", "Numbers",]
     vocab_file = StringVar()
-    vocab_file.set("General Vocab")
-    vocab_dropdown = OptionMenu(root, vocab_file, 
-                                "General Vocab", 
-                                "People", 
-                                "Animals", 
-                                "Colors", 
-                                "Calendar", 
-                                "Numbers", 
-                                )
+    vocab_file.set(vocab_file_options[0])
+    vocab_dropdown = OptionMenu(root, vocab_file, *vocab_file_options, command=lambda x:(on_select_vocab(vocab_file)))
     vocab_dropdown.pack()
-    get_vocab(vocab_file)
 
     # # Button Frame
     # button_frame = Frame(root)
@@ -252,9 +252,6 @@ def main_menu():
     quit_button = Button(root, text="Quit", command=root.quit)
     quit_button.pack()
     ####################################################
-
-
-########################################################
 
 
 ########################################################

@@ -1,5 +1,28 @@
+Se,It
+Mun,My
+Sun,Your
+Heidän,Their
+Meidän,Our
+Teidän,Your
+Sen,Its
 Minä olen,I am
+Mä oon,I am
 Sinä olet,You are
+Sä oot,You are
+Se on,It is
+Me olemme,We are
+Me ollaan,We are
+Te olette,You are
+Te ootte,You are
+He ovat,They are
+He on,They are
+Kuka,Who
+Tämä,This
+Täällä,Here
+Siellä,There
+Olla,To be
+Minulla,I have
+Opiskelen,I study
 Ole hyvä,You're welcome
 Ei kestä,Don't mention it
 Ei se mitään,It's nothing
@@ -10,24 +33,55 @@ Heihei,Bye
 Anteeksi,Sorry
 Terve,Hello
 Tervetuloa,Welcome
-Kuka,Who
+Kippis,Cheers
+Jee,Yay
+Huomenta,Morning
+Nähdään,See you
+Okei,Ok
+Selva,Ok
+Mennään,Let's go
+Miten Voit,How are you feeling
+Hyvin,Well
+Paremmin,Better
+Mita Sulle,And you
+Hyvää,Good
+Tosi Hyvää,Very good
+Ihan Ookoo,Doing ok
+Ei Kauheen Hyvää,Not so good
+Aika Kiireistä,Pretty busy
+Aika Hektistä,Pretty hectic
+Mitä Kuuluu,How are you
+Joo,Yes
+Kyllä,Yes
+Ei,No
+Ja,And
+Aina,Always
+On,Is
+Todella,Very
+Paljon,Lots
 Mukava,Nice
 Hauska,Funny
 Kaunis,Beautiful
 Komea,Handsome
-Kippis,Cheers
-Joo,Yes
-Kyllä,Yes
-Ei,No
-Paljon,Lots
-Jee,Yay
-Ja,And
-Aina,Always
-Mies,Man
-Nainen,Woman
-Ihminen,Human
-On,Is
-Lapsi,Child
+Ujo,Shy
+Hiljainen,Quiet
+Rehellinen,Honest
+Pieni,Small
+Kiltti,Kind
+Tuhma,Bad
+Söpö,Cute
+Hyvä,Good
+Iloinen,Happy
+Kipeä,Sick
+Väsynyt,Tired
+Sinkku,Single
+Mahtava,Awesome
+Ajoissa,Early
+Myöhässä,Late
+Hitaammin,Slower
+Kiirestä,Busy
+Hektistä,Hectic
+Ihana,Lovely
 Valkoinen,White
 Harmaa,Grey
 Ruskea,Brown
@@ -41,23 +95,15 @@ Punainen,Red
 Vaaleanpunainen,Light red
 Pinkki,Pink
 Musta,Black
-Ujo,Shy
-Hiljainen,Quiet
-Ystävä,Friend
-Rehellinen,Honest
-Tyttö,Girl
-Poika,Boy
-Sisko,Sister
-Herra,Mr
 Suomi,Finland
 Suomeksi,In Finnish
 Suomea,Finnish
-Tämä,This
 Maa,Country
-Hyvä,Good
-Todella,Very
-Rouva,Mrs
-Isä,Father
+Amerikkalainen,American
+Ranskalainen,French
+Insinööri,Engineer
+Opettaja,Teacher
+Opeskelija,Student
 Maanantai,Monday
 Tiistai,Tuesday
 Keskiviikko,Wednesday
@@ -77,29 +123,44 @@ Syyskuu,September
 Lokakuu,October
 Marraskuu,November
 Joulukuu,December
+Kuukaudet,Months
+Viikonpäivät,Days of the week
+Yö,Night
+Päivä,Day
 Maalit,Goals
 Maali,Goal
 Tehdä,To do
 Syntymäpäivä,Birthday
 Syntymäpäivät,Birthdays
+Töissä,Work
+Kotona,Home
+Kaupassa,Store
 Kuu,Moon
-Kuukaudet,Months
-Viikonpäivät,Days of the week
-Huomenta,Morning
-Nähdään,See you
-Okei,Ok
-Selva,Ok
-Mennään,Let's go
-Hitaammin,Slower
-Opiskelen,I study
+Järvi,Lake
 Koira,Dog
 Kissa,Cat
-Järvi,Lake
-Yö,Night
-Päivä,Day
-Minulla,I have
-Pieni,Small
-Kiltti,Kind
-Tuhma,Naughty
-Söpö,Cute
-Se,It
+Mies,Man
+Nainen,Woman
+Ihminen,Human
+Isä,Father
+Lapsi,Child
+Bonuslapsi,Bonus Kid
+Tyttö,Girl
+Poika,Boy
+Sisko,Sister
+Ystävä,Friend
+Herra,Mr
+Rouva,Mrs
+Poikaystävä,Boyfriend
+Tyttöystävä,Girlfriend
+Perhe,Family
+Veli,Brother
+Mummo,Grandmother
+Vaari,Grandfather
+Vaimo,Wife
+Tytär,Daughter
+Serkku,Cousin
+Täti,Aunt
+Eno,Uncle on mother's side
+Setä,Uncle on father's side
+Naimisissa,Married
