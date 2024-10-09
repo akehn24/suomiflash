@@ -1,7 +1,16 @@
 # Finnish Language Learning Application
 
+### Tools Used:
+- Python
+- Tkinter
+- CSV
+- inc...(Google Translate API)
+- inc...(TextBlob)
+
 ### To Do:
 - Look into separate files - can I put the windows that aren't the title screen there? 
+- Separate tab with GTranslate API 
+
 - Choose which language to show as vocab -> BLOCKED: need to figure out how to do multi-word translations
 - Spoken vs. Written words -> WIP, not enough yet
 
