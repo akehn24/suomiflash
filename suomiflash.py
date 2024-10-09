@@ -1,7 +1,6 @@
 import csv
 from tkinter import *
 from random import randint
-# from PIL import ImageTk, Image
 
 
 ### Title Splash Screen ################################
@@ -112,7 +111,7 @@ def game_screen():
 
     global score
     score = 0
-    def answer():
+    def answer(event):
         '''
         Answer Function
         Takes the user's input and checks if their translation is correct. 
@@ -167,6 +166,7 @@ def game_screen():
     # Answer Entry Box
     entry_box = Entry(game_screen, font=("Arial", 18))
     entry_box.pack(pady=20)
+    entry_box.bind("<Return>", answer)
 
     # Button Frame
     button_frame = Frame(game_screen)
@@ -241,8 +241,8 @@ def main_menu():
     vocab_dropdown.pack()
 
     # # Button Frame
-    # button_frame = Frame(root)
-    # button_frame.pack(pady=10)
+    button_frame = Frame(root)
+    button_frame.pack(pady=10)
 
     # Start Button
     start_button = Button(root, text="Start", command=game_screen)
