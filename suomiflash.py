@@ -1,5 +1,6 @@
 import csv
 from tkinter import *
+from tkinter import ttk
 from random import randint
 
 
@@ -63,14 +64,11 @@ def button_leave(event):
 def game_screen():
     '''
     Main Game Screen
-    - This is going to be the screen that runs the game, formerly root.
-    - Second function for the main menu.
-    - Add a back button that goes back to the main menu.
+    Runs the vocab game.
     '''
-    # title_screen.destroy()
-
     game_screen = Toplevel()
     game_screen.title("Suomi Flash - Finnish Language Learning App")
+    # iconbitmap to be added later...
     # game_screen.iconbitmap("/Users/akehn/Documents/repos/suomiflash/window_icon.ico")
 
     # create app's main window
@@ -78,7 +76,22 @@ def game_screen():
     game_screen.attributes('-topmost',True)
 
 
-    ### Main Game Functions ################################
+    ### Notebook Tabs #########################
+    game_notebook = ttk.Notebook(game_screen)
+    game_notebook.pack()
+
+    game_frame = Frame(game_notebook, width=app_width, height=app_height)
+    game_frame.pack(fill="both", expand=1)
+
+    translator_frame = Frame(game_notebook, width=app_width, height=app_height)
+    translator_frame.pack(fill="both", expand=1)
+
+    game_notebook.add(game_frame, text="SuomiFlash")
+    game_notebook.add(translator_frame, text="Translator")
+    ###########################################
+
+
+    ### Main Game Functions ###################
     def clear_answers():
         global hint_string, hint_count
 
@@ -109,9 +122,12 @@ def game_screen():
         vocab_word.config(text=vocab[rand_word][0])
 
 
+    def return_answer(event):
+        answer()
+
     global score
     score = 0
-    def answer(event):
+    def answer():
         '''
         Answer Function
         Takes the user's input and checks if their translation is correct. 
@@ -147,29 +163,29 @@ def game_screen():
             hint_string = hint_string + vocab[rand_word][1][hint_count]
             hint_label.config(text=hint_string)
             hint_count += 1
-    ########################################################
+    ###########################################
 
 
-    ### Game Buttons #######################################
+    ### Game Buttons ##########################
     # Word Label
-    vocab_word = Label(game_screen, text="", font=("Arial", 36))
+    vocab_word = Label(game_frame, text="", font=("Arial", 36))
     vocab_word.pack(pady=20)
 
     # Answer Label
-    ans_label = Label(game_screen, text="", font=("Helvetica", 20))
+    ans_label = Label(game_frame, text="", font=("Helvetica", 20))
     ans_label.pack(pady=20)
 
     # Hint Label
-    hint_label = Label(game_screen, text="", font=("Arial", 15))
+    hint_label = Label(game_frame, text="", font=("Arial", 15))
     hint_label.pack()
 
     # Answer Entry Box
-    entry_box = Entry(game_screen, font=("Arial", 18))
+    entry_box = Entry(game_frame, font=("Arial", 18))
     entry_box.pack(pady=20)
-    entry_box.bind("<Return>", answer)
+    entry_box.bind("<Return>", return_answer)
 
     # Button Frame
-    button_frame = Frame(game_screen)
+    button_frame = Frame(game_frame)
     button_frame.pack(pady=10)
 
     # Answer Button
@@ -191,13 +207,13 @@ def game_screen():
     hint_button.bind("<Leave>", button_leave)
 
     # Score Label
-    score_label = Label(game_screen, text="", font=("Arial", 20))
+    score_label = Label(game_frame, text="", font=("Arial", 20))
     score_label.pack(pady=20)
 
     # Back Button
-    back_button = Button(game_screen, text="Back to Menu", command=game_screen.destroy)
+    back_button = Button(game_frame, text="Back to Menu", command=game_screen.destroy)
     back_button.pack()
-    ########################################################
+    ###########################################
 
     next()
 ########################################################
@@ -224,7 +240,7 @@ def main_menu():
             get_vocab(vocab_file)
 
 
-    ### Menu Buttons/Labels ###################################
+    ### Menu Buttons/Labels ###################
     # Title Label
     title_label = Label(root, text="SuomiFlash", font=("Arial", 36))
     title_label.pack(pady=20)
@@ -251,10 +267,10 @@ def main_menu():
     # Quit Button
     quit_button = Button(root, text="Quit", command=root.quit)
     quit_button.pack()
-    ####################################################
-
-
+    ###########################################
 ########################################################
+
+
 ########################################################
 
 title_screen.after(2000, main_menu)
