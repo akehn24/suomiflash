@@ -1,6 +1,9 @@
 import csv
+import googletrans
+import textblob
+from googletrans import Translator
 from tkinter import *
-from tkinter import ttk
+from tkinter import ttk, messagebox
 from random import randint
 
 
@@ -14,8 +17,8 @@ root_label = Label(title_screen, text="SuomiFlash", font=("Arial", 50))
 root_label.pack(pady=30)
 
 # main screen size
-app_width = 550
-app_height = 450
+app_width = 650
+app_height = 550
 
 # use these to center your windows
 screen_width = title_screen.winfo_screenwidth()
@@ -23,7 +26,7 @@ screen_height = title_screen.winfo_screenheight()
 x_coord = int((screen_width / 2) - (app_width / 2))
 y_coord = int((screen_height / 2) - (app_height / 2))
 
-title_screen.geometry(f"300x100+{x_coord + 125}+{y_coord + 100}")
+title_screen.geometry(f"300x100+{x_coord + 175}+{y_coord + 200}")
 ########################################################
 
 
@@ -78,7 +81,7 @@ def game_screen():
 
     ### Notebook Tabs #########################
     game_notebook = ttk.Notebook(game_screen)
-    game_notebook.pack()
+    game_notebook.pack(fill="both")
 
     game_frame = Frame(game_notebook, width=app_width, height=app_height)
     game_frame.pack(fill="both", expand=1)
@@ -91,7 +94,7 @@ def game_screen():
     ###########################################
 
 
-    ### Main Game Functions ###################
+    ### Game Functions ########################
     def clear_answers():
         global hint_string, hint_count
 
@@ -166,7 +169,7 @@ def game_screen():
     ###########################################
 
 
-    ### Game Buttons ##########################
+    ### Game GUI ##############################
     # Word Label
     vocab_word = Label(game_frame, text="", font=("Arial", 36))
     vocab_word.pack(pady=20)
@@ -213,6 +216,62 @@ def game_screen():
     # Back Button
     back_button = Button(game_frame, text="Back to Menu", command=game_screen.destroy)
     back_button.pack()
+    ###########################################
+
+
+    ### Translator Functions ##################
+    languages = googletrans.LANGUAGES
+    language_list = list(languages.values())
+
+    def clear_language():
+        text_to_translate.delete(1.0, END)
+        translated_text.delete(1.0, END)
+
+
+    def translate_text():
+        # delete previous translation
+        translated_text.delete(1.0, END)
+        g_translator = Translator()
+
+        try:
+            # get language code
+            for key, value in languages.items():
+                if value == language_to_translate.get():
+                    lang_to_trans_code = key
+
+            for key, value in languages.items():
+                if value == translate_to_language.get():
+                    trans_to_lang_code = key
+
+            text_translated = g_translator.translate(text_to_translate.get(1.0, END), src=lang_to_trans_code, dest=trans_to_lang_code)
+            translated_text.insert(1.0, text_translated.text)
+
+        except Exception as e:
+            messagebox.showerror("Translator", e, parent=game_screen)
+            print(e)
+    ###########################################
+
+
+    ### Translator GUI ########################
+    text_to_translate = Text(translator_frame, width=30, height=20)
+    text_to_translate.grid(row=0, column=0, pady=20, padx=10)
+
+    translate_button = Button(translator_frame, text="Translate", font=("Arial", 24), command=translate_text)
+    translate_button.grid(row=0, column=1)
+
+    translated_text = Text(translator_frame, width=30, height=20)
+    translated_text.grid(row=0, column=2, pady=20, padx=10)
+
+    language_to_translate = ttk.Combobox(translator_frame, width=10, value=language_list)
+    language_to_translate.current(21)  # english = 21
+    language_to_translate.grid(row=1, column=0)
+
+    translate_to_language = ttk.Combobox(translator_frame, width=10, value=language_list)
+    translate_to_language.current(25)  # finnish = 25
+    translate_to_language.grid(row=1, column=2)
+
+    clear_button = Button(translator_frame, text="Clear", command=clear_language)
+    clear_button.grid(row=2, column=1)
     ###########################################
 
     next()
