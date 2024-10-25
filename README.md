@@ -4,18 +4,14 @@
 - Python
 - Tkinter
 - CSV
-- Google Translate
-- TextBlob
+- Google Translate API
 
 ### To Do:
 - Look into separate files - can I put the windows that aren't the title screen there? 
-- Separate tab with GTranslate API 
-- Notebook tab box fill the app screen
-- Add text box to menu
+- Add box around text to menu 
 - Hide menu screen while game is "running"
 - Capitilize language names -> is this worth doing?
 
-- Choose which language to show as vocab -> BLOCKED: need to figure out how to do multi-word translations
 - Spoken vs. Written words -> WIP, not enough yet
 
 
@@ -43,3 +39,6 @@
 - Start menu
 - Exit button
 - List of vocab to choose from
+- Separate tab with GTranslate API 
+- Notebook tab box fill the app screen
+- Choose which language to show as vocab -> ISSUE: need to figure out how to do multi-word translations

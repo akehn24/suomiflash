@@ -1,10 +1,15 @@
 import csv
 import googletrans
-import textblob
 from googletrans import Translator
 from tkinter import *
 from tkinter import ttk, messagebox
 from random import randint
+
+
+global vocab
+global answer_lang  # translate question_lang into this
+global question_lang  # translate this into answer_lang
+# another way to remember it -> your question, my answer
 
 
 ### Title Splash Screen ################################
@@ -39,8 +44,8 @@ vocab_files = {
     "Colors": "/Users/akehn/Documents/repos/suomiflash/vocab_files/color_vocab.csv", 
     "Calendar": "/Users/akehn/Documents/repos/suomiflash/vocab_files/calendar_vocab.csv", 
     "Numbers": "/Users/akehn/Documents/repos/suomiflash/vocab_files/number_vocab.csv", 
+    "Test": "/Users/akehn/Documents/repos/suomiflash/vocab_files/test.csv",
 }
-global vocab
 def get_vocab(vocab_file):
     global vocab
     vocab = []
@@ -108,6 +113,7 @@ def game_screen():
         hint_count = 0
 
 
+    global answer_lang
     def next():
         '''
         Next Function
@@ -119,15 +125,18 @@ def game_screen():
         # create random int/word
         global vocab
         global rand_word
+        global answer_lang
         rand_word = randint(0, len(vocab)-1)
 
+        # Eng=0, Fin=1
         # update label with the random word
-        vocab_word.config(text=vocab[rand_word][0])
+        vocab_word.config(text=vocab[rand_word][answer_lang])
 
 
     def return_answer(event):
         answer()
-
+ 
+    global question_lang
     global score
     score = 0
     def answer():
@@ -136,12 +145,14 @@ def game_screen():
         Takes the user's input and checks if their translation is correct. 
         '''
         global score
+        global answer_lang  
+        global question_lang
 
-        if entry_box.get().capitalize() == vocab[rand_word][1]:
-            ans_label.config(text=f"Correct! {vocab[rand_word][0]} translates to {vocab[rand_word][1]}.", fg="#34eba1")
+        if entry_box.get().capitalize() == vocab[rand_word][question_lang]:
+            ans_label.config(text=f"Correct! {vocab[rand_word][answer_lang]} translates to {vocab[rand_word][question_lang]}.", fg="#34eba1")
             score += 1
         else:
-            ans_label.config(text=f"Incorrect! {vocab[rand_word][0]} translates to {(vocab[rand_word][1]).capitalize()}.", fg="#eb345b")
+            ans_label.config(text=f"Incorrect! {vocab[rand_word][answer_lang]} translates to {(vocab[rand_word][question_lang]).capitalize()}.", fg="#eb345b")
             score = 0
         score_label.config(text=f"Score = {score}")
 
@@ -159,11 +170,11 @@ def game_screen():
         global hint_string
         global hint_count
 
-        word_length = len(vocab[rand_word][1])
+        word_length = len(vocab[rand_word][question_lang])
 
         if hint_count < word_length:
             # keep giving hints
-            hint_string = hint_string + vocab[rand_word][1][hint_count]
+            hint_string = hint_string + vocab[rand_word][question_lang][hint_count]
             hint_label.config(text=hint_string)
             hint_count += 1
     ###########################################
@@ -270,7 +281,7 @@ def game_screen():
     translate_to_language.current(25)  # finnish = 25
     translate_to_language.grid(row=1, column=2)
 
-    clear_button = Button(translator_frame, text="Clear", command=clear_language)
+    clear_button = Button(translator_frame, text="Clear", command=clear_language, font=("Arial", 16))
     clear_button.grid(row=2, column=1)
     ###########################################
 
@@ -298,6 +309,20 @@ def main_menu():
         if selection.get() != "Choose Your Vocab":
             get_vocab(vocab_file)
 
+    
+    global answer_lang  
+    global question_lang
+    def on_select_language(selection):
+        global answer_lang  
+        global question_lang
+        if selection.get() != "Choose Your Language":
+            if selection.get() == "English":
+                answer_lang = 0
+                question_lang = 1
+            elif selection.get() == "Finnish":
+                answer_lang = 1
+                question_lang = 0
+
 
     ### Menu Buttons/Labels ###################
     # Title Label
@@ -305,15 +330,26 @@ def main_menu():
     title_label.pack(pady=20)
 
     # Choose Your Vocab Label
-    choose_label = Label(root, text="Choose your vocab:", font=("Arial", 20))
-    choose_label.pack(pady=20)
+    choose_vocab_label = Label(root, text="Choose your vocab type:", font=("Arial", 20))
+    choose_vocab_label.pack(pady=20)
 
     # Vocab Dropdown
-    vocab_file_options = ["Choose Your Vocab", "General Vocab", "People", "Animals", "Colors", "Calendar", "Numbers",]
+    vocab_file_options = ["Choose Your Vocab", "General Vocab", "People", "Animals", "Colors", "Calendar", "Numbers", "Test", ]
     vocab_file = StringVar()
     vocab_file.set(vocab_file_options[0])
     vocab_dropdown = OptionMenu(root, vocab_file, *vocab_file_options, command=lambda x:(on_select_vocab(vocab_file)))
     vocab_dropdown.pack()
+
+    # Choose Your Language Label
+    choose_lang_label = Label(root, text="Choose which language you want to work in:", font=("Arial", 16))
+    choose_lang_label.pack(pady=20)
+
+    # Language Dropdown
+    language_options = ["Choose Your Language", "English", "Finnish"]
+    language_choice = StringVar()
+    language_choice.set(language_options[0])
+    language_dropdown = OptionMenu(root, language_choice, *language_options, command=lambda x:(on_select_language(language_choice)))
+    language_dropdown.pack()
 
     # # Button Frame
     button_frame = Frame(root)
