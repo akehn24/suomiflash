@@ -16,7 +16,9 @@ Te olette,You are
 Te ootte,You are
 He ovat,They are
 He on,They are
+Nimi,Name
 Kuka,Who
+Missä,Where
 Tämä,This
 Täällä,Here
 Siellä,There
@@ -57,8 +59,14 @@ Ei,No
 Ja,And
 Aina,Always
 On,Is
+Onko,Is
 Todella,Very
 Paljon,Lots
+Usein,Often
+Nyt,Now
+Väärin,Wrong
+Kylmä,Cold
+Onnellinen,Happy
 Mukava,Nice
 Hauska,Funny
 Kaunis,Beautiful
@@ -67,6 +75,7 @@ Ujo,Shy
 Hiljainen,Quiet
 Rehellinen,Honest
 Pieni,Small
+Iso,Big
 Kiltti,Kind
 Tuhma,Bad
 Söpö,Cute
@@ -92,15 +101,30 @@ Vihreä,Green
 Keltainen,Yellow
 Oranssi,Orange
 Punainen,Red
-Vaaleanpunainen,Light red
+Vaalean,Light
 Pinkki,Pink
 Musta,Black
 Suomi,Finland
 Suomeksi,In Finnish
 Suomea,Finnish
+Kaupunki,City
 Maa,Country
 Amerikkalainen,American
 Ranskalainen,French
+Saamelainen,Sámi
+Viro,Estonia
+Virolainen,Estonian
+Islanti,Iceland
+Islantilainen,Icelandic
+Norja,Norway
+Norjalainen,Norwegian
+Vanäjä,Russia
+Venäläinen,Russian
+Ruotsi,Sweden
+Ruotsalainen,Swedish
+Tanska,Denmark
+Tanskalainen,Danish
+Pohjoinen,Northern
 Insinööri,Engineer
 Opettaja,Teacher
 Opeskelija,Student
@@ -139,6 +163,7 @@ Kuu,Moon
 Järvi,Lake
 Koira,Dog
 Kissa,Cat
+Lemmikki,Pet
 Mies,Man
 Nainen,Woman
 Ihminen,Human
@@ -155,8 +180,8 @@ Poikaystävä,Boyfriend
 Tyttöystävä,Girlfriend
 Perhe,Family
 Veli,Brother
-Mummo,Grandmother
-Vaari,Grandfather
+Mummo,Grandma
+Vaari,Grandpa
 Vaimo,Wife
 Tytär,Daughter
 Serkku,Cousin
@@ -164,3 +189,13 @@ Täti,Aunt
 Eno,Uncle on mother's side
 Setä,Uncle on father's side
 Naimisissa,Married
+Pari,Couple
+Yhdessä,Together
+Nalle,Teddy bear
+Auto,Car
+Kännykkä,Phone
+Shamaani,Shaman
+Velho,Wizard
+Viikinki,Viking
+Laulu,Song
+Bändi,Band
